@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los mayores robos del VARcelona</title>
+    <style>
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            background-image: repeating-linear-gradient(
+                    to right,
+                    rgba(165, 0, 68, 0.05),
+                    rgba(165, 0, 68, 0.05) 50px,
+                    rgba(0, 77, 152, 0.05) 50px,
+                    rgba(0, 77, 152, 0.05) 100px
+            );
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .main-header {
+            background: linear-gradient(135deg, #5a0c10 0%, #1b2e8f 100%);
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 5px solid #cdb828;
+        }
+
+        .main-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            color: white;
+        }
+
+        .main-img {
+            max-width: 250px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+
+        .card {
+            background-color: #252525;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            position: relative;
+            border: 1px solid #333;
+        }
+
+        .card.highlight {
+            border: 2px solid #cdb828;
+            transform: scale(1.02);
+        }
+        .card.silver {
+            border: 2px solid #a69e9d;
+            transform: scale(1.02);
+        }
+        .card.bronze {
+            border: 2px solid #502626;
+            transform: scale(1.02);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 20px 20px 5px 20px;
+            color: #ffffff;
+            font-size: 1.8rem;
+        }
+
+        .subtitle {
+            margin: 0;
+            padding: 0 20px 20px 20px;
+            color: #a0a0a0;
+            font-weight: 400;
+            font-size: 1rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .badge.bronze {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #502626;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .badge.silver {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #a69e9d;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .badge.gold {
+            background-color: #f1c40f;
+            color: #000;
+        }
+
+        .video-container {
+            width: 100%;
+            background: black;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .content-text {
+            padding: 20px;
+            text-align: justify;
+            color: white;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #666;
+            border-top: 1px solid #333;
+            margin-top: 50px;
+        }
+
+        nav { background-color: #000;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #cdb828;
+        }
+        nav ul { padding: 0;
+            margin: 0; display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        nav a { color: #fff;
+            display: block; padding: 15px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        nav a:hover { background-color: #cdb828;
+            color: #000;
+        }
+
+        .tabla-stats { width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #252525;
+            color: white;
+        }
+        .tabla-stats th { background-color: #5a0c10;
+            color: #cdb828;
+            padding: 10px;
+            border: 1px solid #cdb828;
+        }
+        .tabla-stats td { border: 1px solid #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .form-container { background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #cdb828;
+            margin-top: 40px;
+        }
+        .form-container input, .form-container textarea { width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            background: #111;
+            border: 1px solid #555;
+            color: white;
+            box-sizing: border-box;
+        }
+        .btn-enviar { width: 100%;
+            padding: 10px;
+            background-color: #cdb828;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            color: black;
+        }
+        .btn-enviar:hover { background-color: white;
+        }
+
+        .titulo-extra { color: #cdb828;
+            text-align: center;
+            margin-top: 40px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#datos">Estadísticas</a></li>
+        <li><a href="#contacto">Denunciar</a></li>
+    </ul>
+</nav>
+
+<header class="main-header" id="inicio">
+    <div class="container">
+        <h1>Los mayores robos del VARcelona</h1>
+        <p class="intro-text">Un repaso a las decisiones arbitrales más polémicas de la historia culé.</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6KpKtHHb-B54L82B8hhrk1c4MjYkZnNSgvw&s" alt="Escudo Barcelona" class="main-img">
+    </div>
+</header>
+
+<main class="container">
+    <article class="card">
+        <div class="badge">TOP 5</div>
+        <h2>FC Barcelona 2 - 2 Real Madrid</h2>
+        <h3 class="subtitle">LA LIGA 2015/2016</h3>
+        <div class="video-container">
+            <video controls>
+                <source src="barcelonarealmadrid.mp4" type="video/mp4">
+                Tu navegador no soporta vídeo.
+            </video>
+        </div>
+        <div class="content-text">
+            <p>Como podemos ver en el video, el Madrid se veria afectado por las decisiones arbitrales, anulandole un gol por una falta inexistente de Bale hacia Jordi Alba el cual al verse superado se tira de manera clamorosa y mintiendo al arbitro, por suerte el Madrid pudo remontar el partido, aunque finalmente no pudo ganar La Liga</p>
+        </div>
+    </article>
+    <article class="card" id="videos">
+        <div class="badge">TOP 4</div>
+        <h2>FC Barcelona 1 - 2 Real Madrid</h2>
+        <h3 class="subtitle">LA LIGA 2017/2018</h3>
+        <div class="video-container">
+            <video controls>
+                <source src="barcelonarealmadrid2.mp4" type="video/mp4">
+                Tu navegador no soporta vídeo.
+            </video>
+        </div>
+        <div class="content-text">
+            <p>Este partido fue un robo claro hacia el Madrid, falta clara a Varane de parte de Luis Suarez donde le roba finalmente el balon y marca Messi seguidamente. Despues en la segunda parte un penalti claro de Jordi Alba sobre Marcelo donde el arbitro haria la vista gorda porque estaba delante y segun el no era nada, aunque se ve claramente que era penalti y muy obvio</p>
+        </div>
+    </article>
+    <article class="card bronze">
+        <div class="badge bronze">TOP 3</div>
+        <h2>FC Barcelona 4 - 2 SD Eibar</h2>
+        <h3 class="subtitle">LA LIGA 2016/2017</h3>
+        <div class="video-container">
+            <video controls>
+                <source src="YTDown.com_YouTube_simulacion-de-jordi-alba-y-neymar-jr-par_Media__wE9qOonSLs_001_720p.mp4" type="video/mp4">
+                Tu navegador no soporta vídeo.
+            </video>
+        </div>
+        <div class="content-text">
+            <p>En el video se puede ver como Jordi Alba sin contacto ninguno se tira un piscinazo. Por suerte, el penalti sería fallado posteriormente.</p>
+            <p>Neymar tampoco se queda atrás, piscinazo al borde del área pequeña y otro penaltito señalado. Una auténtica vergüenza.</p>
+        </div>
+    </article>
+
+    <article class="card silver">
+        <div class="badge silver">TOP 2 </div>
+        <h2>FC Barcelona 6 - 1 París Saint Germain</h2>
+        <h3 class="subtitle">Vuelta Octavos - UEFA CHAMPIONS LEAGUE 2016/2017</h3>
+        <div class="video-container">
+            <video controls>
+                <source src="videoplayback.mp4" type="video/mp4">
+                Tu navegador no soporta vídeo.
+            </video>
+        </div>
+        <div class="content-text">
+            <p>Después de una ida en París donde el PSG se puso 4-0, en la vuelta hubo decisiones muy polémicas para poder pasar de ronda.</p>
+            <p>Piscinazos de Suárez y Neymar, manos que no ven los árbitros... el video habla por sí solo.</p>
+        </div>
+    </article>
+
+    <article class="card highlight">
+        <div class="badge gold">TOP 1</div>
+        <h2>Chelsea 1 - 1 FC Barcelona</h2>
+        <h3 class="subtitle">Vuelta Semifinal - UEFA CHAMPIONS LEAGUE 2008/2009</h3>
+        <div class="video-container">
+            <video controls>
+                <source src="barcelonachelsea.mp4" type="video/mp4">
+                Tu navegador no soporta vídeo.
+            </video>
+        </div>
+        <div class="content-text">
+            <p>El escándalo de Stamford Bridge. Penaltis no pitados por faltas dentro del área, manos muy claras y rojas perdonadas.</p>
+            <p>Desde ese día no ha habido una polémica tan descarada en Europa.</p>
+        </div>
+    </article>
+
+    <h2 class="titulo-extra" id="datos">Datos y Estadísticas</h2>
+    <table class="tabla-stats">
+        <thead>
+        <tr><th>Temporada</th><th>Penaltis a Favor</th><th>Rivales Expulsados</th><th>Notas</th></tr>
+        </thead>
+        <tbody>
+        <tr><td>2015/2016</td><td>19</td><td>9</td><td>Récord histórico</td></tr>
+        <tr><td>2016/2017</td><td>12</td><td>7</td><td>Remontada PSG</td></tr>
+        <tr><td>2008/2009</td><td>10</td><td>10</td><td>Ovrebo en Londres</td></tr>
+        </tbody>
+    </table>
+
+    <div class="form-container" id="contacto">
+        <h2 style="color:white; text-align:center;">Reportar un Robo</h2>
+        <form>
+            <label style="color:#cdb828">Partido:</label>
+            <input type="text" placeholder="Ej: Real Madrid vs Barça">
+            <label style="color:#cdb828">Descripción:</label>
+            <textarea rows="4" placeholder="Describe la polémica..."></textarea>
+            <button class="btn-enviar">Enviar Reporte</button>
+        </form>
+    </div>
+</main>
+<footer>
+    <p>Web creada con fines informativos y de expresar mi malestar con los robos tan descarados del Varcelona.</p>
+</footer>
+</body>
+</html>
